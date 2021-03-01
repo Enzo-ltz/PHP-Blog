@@ -45,6 +45,11 @@ class User
      */
     private $comments;
 
+    public function __toString() : string
+    {
+        return $this->username;
+    }
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();

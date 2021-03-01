@@ -50,6 +50,11 @@ class Post
      */
     private $comments;
 
+    public function __toString() : string
+    {
+        return $this->content;
+    }
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();

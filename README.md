@@ -74,7 +74,7 @@ Nous devons changer de base de données puisque nous utilisons une base SQLite t
 
 > ## Expliquer l'intérêt des migrations d'une base de données
 
-Les migrations permettent de créer facilement et rapidement une base de données selon les relations entrées dans le projet.
+Les migrations permettent de créer facilement et rapidement une base de données selon les relations entrées dans le projet. Elles nous permettent de versionner nos base de données et de s'assurer que nos données sont sauvegarder. Ainsi, lorsque nous changeons le format d'une donnée, cela nous permet de ne pas tout casser !
 
 
 
