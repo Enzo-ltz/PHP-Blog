@@ -19,6 +19,7 @@ class PostCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
+            TextEditorField::new('title'),
             TextEditorField::new('content'),
             BooleanField::new('isPublished'),
             BooleanField::new('isDeleted'),
@@ -30,7 +31,6 @@ class PostCrudController extends AbstractCrudController
     {
         $post = new Post();
         $post->setCreatedAt(new \DateTimeImmutable());
-
         return $post;
     }
     

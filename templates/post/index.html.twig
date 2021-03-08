@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}La Binouserie{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-10">
+                <h1>New Articles</h1>
+                {% for post in posts %}
+                    <div class="row mx-3 pl-4 border" onclick="location='{{ path('detail', {post: post.id}) }}'">
+                        <article>
+                            <h3>{{ post.getTitle | striptags}}</h3>
+                            <p>{{ post.getContent | striptags }}...</p>
+                        </article>
+                    </div>
+                {% endfor %}
+            </div>
+        <span class="col-2 border-left border-bottom border-info sidemenu">
+            <span >
+                {% include 'post/sidebar.html.twig' %}
+            </span>
+        </span>
+        </div>
+        
+    </div>
+
+
+<style>
+.sidemenu{
+    height:100vh;
+    position: sticky;
+    top:0;
+}
+</style>
+
+{% endblock %}

@@ -50,7 +50,7 @@ Le CLI permet de :
 
   > ## Quelles relations existent entre les entités (Many To One/Many To Many/...) ? Faire un schéma de la base de données.
 
-![image-20210301101808280](C:\Users\Enzo\AppData\Roaming\Typora\typora-user-images\image-20210301101808280.png)
+![image-20210301101808280](src\images\diagramme.png)
 
 * ManyToOne : User peut avoir plusieurs posts tandis qu'un post peut avoir un seul User 
 
@@ -93,5 +93,6 @@ Nous allons utiliser EasyAdmin dans ce projet
 
 EasyAdmin est un générateur d'admin pour Symfony, il permet de générer un backend rapidement en évitant d'avoir à répéter les lignes de codes. Il existe des commandes pour créer les structures des classes rapidement, toujours dans l'optique d'être efficace.
 
+> ## Pourquoi doit-on implémenter des méthodes to string dans nos entités?
 
-
+Il est nécessaire d'implémenter des méthodes toString car l'affichage d'un objet est impossible, ainsi, avec la méthode toString nous affichons un string, ce qui est possible. De plus, cela permet d'éviter les injections de codes ! 
