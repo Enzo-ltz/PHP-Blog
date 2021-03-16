@@ -5,6 +5,7 @@
 {% block body %}
 
     <h1>New Articles</h1>
+    <a href="{{ path('addPost')}}">Ajouter poste</a>
     {% for post in posts %}
         <a class="row mx-3 pl-4 border" href='{{ path('detail', {post: post.id}) }}'>
             <article>

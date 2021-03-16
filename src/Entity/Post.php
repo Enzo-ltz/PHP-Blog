@@ -38,12 +38,12 @@ class Post
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isPublished;
+    private $isPublished=true;
 
     /**
      * @ORM\Column(type="boolean")
      */
-    private $isDeleted;
+    private $isDeleted=false;
 
     /**
      * @ORM\OneToMany(targetEntity=Comment::class, mappedBy="post")

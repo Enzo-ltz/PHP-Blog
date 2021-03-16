@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Comment;
 use App\Entity\Post;
 use App\Form\CommentType;
+use App\Form\PostType;
 use App\Repository\PostRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,6 +25,33 @@ class PostController extends AbstractController
     {
         return $this->render('post/index.html.twig', [
             'posts' => $emPost->findAll()
+        ]);
+    }
+
+    #[Route('/post/add', name: 'addPost')]
+    public function add(UserRepository $userRepository, EntityManagerInterface $entityManager, Request $request): Response
+    {
+        $post = new Post();
+        $post->setCreatedAt(new \DateTime());
+        $post->setIsDeleted(false);
+        //TODO : set id de l'user connecté
+        $post->setAuthor($userRepository->findAll()[0]);
+
+
+        $form = $this->createForm(PostType::class, $post);
+
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $post = $form->getData();
+
+            $entityManager->persist($post);
+            $entityManager->flush();
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('post/addPost.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
@@ -55,6 +83,9 @@ class PostController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+
+
 
     public function recentArticles(PostRepository $emPost, int $max = 5): Response
     {
