@@ -4,30 +4,12 @@
 
 {% block body %}
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-10">
-                <article>
-                    <h1>{{ post.getTitle | striptags }}</h1>
-                    <small>Publié le : {{ post.getCreatedAt | date("m/d/Y \\à g:ia") }} - {{ post.getAuthor }}</small>
-                </article>
-                </br>
-                <div> {{ post.content | raw }}</div>
-            </div>
-
-
-
-
-
-
-
-
-            <span class="col-2 border-left border-bottom border-info sidemenu">
-                <span >
-                    {% include 'post/sidebar.html.twig' %}
-                </span>
-            </span>
-        </div>
-        
+        <article>
+            <h1>{{ post.getTitle | striptags }}</h1>
+            <small>Publié le : {{ post.getCreatedAt | date("m/d/Y \\à g:ia") }} - {{ post.getAuthor }}</small>
+        </article>
+        </br>
+        <div> {{ post.content | raw }}</div>
     </div>
 
 

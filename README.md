@@ -96,3 +96,9 @@ EasyAdmin est un générateur d'admin pour Symfony, il permet de générer un ba
 > ## Pourquoi doit-on implémenter des méthodes to string dans nos entités?
 
 Il est nécessaire d'implémenter des méthodes toString car l'affichage d'un objet est impossible, ainsi, avec la méthode toString nous affichons un string, ce qui est possible. De plus, cela permet d'éviter les injections de codes ! 
+
+# Controllers
+
+> ## Qu'est-ce que le ParamConverter ? À quoi sert le Doctrine Param Converter ?
+
+Le ParamConverter permet est un outil de conversion qui permet de récupérer l'entitée courante. Il peut également gérer les erreurs 404 à notre place !

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Post;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -47,4 +48,29 @@ class PostRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findLastPostsByUser(int $user_id, int $maxResult = 5): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.title, p.content')
+            ->join('p.author', 'a')
+            ->where('a.id = :user_id')
+            ->andWhere('p.isDeleted = false')
+            ->setParameter('user_id', $user_id)
+            ->orderBy('p.createdAt', 'DESC')
+            ->setMaxResults($maxResult)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findLastPosts(int $maxResult = 5): array
+    {
+        return $this->createQueryBuilder('p')
+            ->select('p.title, p.content, count(c.id)')
+            ->leftJoin('p.comments', 'c')
+            ->groupBy('p.title, p.content')
+            ->orderBy('count(c.id)', 'DESC')
+            ->setMaxResults($maxResult)
+            ->getQuery()
+            ->getResult();
+    }
 }

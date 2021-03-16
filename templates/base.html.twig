@@ -20,8 +20,15 @@
         <div class="header">
             <h1>Le Blog de la Binouserie</h1>
         </div>
-        <div>
-            {% block body %}{% endblock %}
+        <div class="row">
+            <div class="col-10">
+                {% block body %}{% endblock %}
+            </div>
+            <div class="col-2 border-left border-bottom border-info sidemenu">
+                {{ render(controller(
+                    'App\\Controller\\PostController::recentArticles', {max: 5}
+                )) }}
+            </div>
         </div>
     </body>
 </html>
@@ -33,5 +40,10 @@
         display:flex;
         align-items: center;
         background: #f9b171
+    }
+    .sidemenu{
+        height:100vh;
+        position: sticky;
+        top:0;
     }
 </style>
