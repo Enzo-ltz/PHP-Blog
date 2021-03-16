@@ -11,8 +11,18 @@
         </br>
         <div> {{ post.content | raw }}</div>
     </div>
-
-
+    <div>
+        {{form(form)}}
+    </div>
+    <ul>
+        {% for comment in post.comments %}
+            <li>Le : {{ comment.getCreatedAt | date("m/d/Y \\à g:ia") }}  par {{comment.author}} :
+                <div>
+                    {{comment.content}}
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
 <style>
 .sidemenu{
     height:100vh;

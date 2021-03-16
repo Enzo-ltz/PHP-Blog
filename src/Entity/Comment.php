@@ -41,6 +41,11 @@ class Comment
      * @ORM\Column(type="boolean")
      */
     private $isDeleted;
+    
+    public function __toString() : string
+    {
+        return $this->content;
+    }
 
     public function getId(): ?int
     {

@@ -6,12 +6,12 @@
 
     <h1>New Articles</h1>
     {% for post in posts %}
-        <div class="row mx-3 pl-4 border" onclick="location='{{ path('detail', {post: post.id}) }}'">
+        <a class="row mx-3 pl-4 border" href='{{ path('detail', {post: post.id}) }}'>
             <article>
                 <h3>{{ post.getTitle | striptags}}</h3>
                 <p>{{ post.getContent | striptags }}...</p>
             </article>
-        </div>
+        </a>
     {% endfor %}
 
 
