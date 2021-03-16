@@ -50,7 +50,7 @@ Le CLI permet de :
 
   > ## Quelles relations existent entre les entités (Many To One/Many To Many/...) ? Faire un schéma de la base de données.
 
-![image-20210301101808280](src\images\diagramme.png)
+![image-20210301101808280](src/images/diagramme.png)
 
 * ManyToOne : User peut avoir plusieurs posts tandis qu'un post peut avoir un seul User 
 
