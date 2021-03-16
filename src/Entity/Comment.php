@@ -41,7 +41,8 @@ class Comment
      * @ORM\Column(type="boolean")
      */
     private $isDeleted;
-    
+
+
     public function __toString() : string
     {
         return $this->content;
@@ -57,12 +58,12 @@ class Comment
         return $this->author;
     }
 
-    public function setAuthor(?User $author): self
-    {
-        $this->author = $author;
+     public function setAuthor(?User $author): self
+     {
+         $this->author = $author;
 
-        return $this;
-    }
+         return $this;
+     }
 
     public function getContent(): ?string
     {

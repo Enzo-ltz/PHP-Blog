@@ -55,6 +55,7 @@ class Post
      */
     private $title;
 
+
     public function __toString() : string
     {
         return $this->content;
@@ -171,4 +172,5 @@ class Post
 
         return $this;
     }
+
 }

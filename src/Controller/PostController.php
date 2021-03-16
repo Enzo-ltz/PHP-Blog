@@ -28,13 +28,13 @@ class PostController extends AbstractController
     }
 
     #[Route('/post/{post}', name: 'detail')]
-    public function post(UserRepository $emUser, EntityManagerInterface $entity, Post $post, Request $request): Response
+    public function post(UserRepository $userRepository, EntityManagerInterface $entityManager, Post $post, Request $request): Response
     {
         $comment = new Comment();
         $comment->setCreatedAt(new \DateTime());
         $comment->setIsDeleted(false);
         //TODO : set id de l'user connecté
-        $comment->setAuthor($emUser->findAll()[0]);
+        $comment->setAuthor($userRepository->findAll()[0]);
 
 
         $form = $this->createForm(CommentType::class, $comment);
@@ -45,8 +45,8 @@ class PostController extends AbstractController
             $comment = $form->getData();
 
             $post->addComment($comment);
-            $entity->persist($comment);
-            $entity->flush();
+            $entityManager->persist($comment);
+            $entityManager->flush();
             return $this->redirectToRoute('detail',['post'=> $post->getId()]);
         }
 

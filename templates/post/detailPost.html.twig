@@ -15,9 +15,10 @@
         {{form(form)}}
     </div>
     <ul>
-        {% for comment in post.comments %}
+        {% for comment in post.comments | sort((a, b) => b.createdAt <=> a.createdAt) %}
             <li>Le : {{ comment.getCreatedAt | date("m/d/Y \\à g:ia") }}  par {{comment.author}} :
                 <div>
+                    {{ dump(comment) }}
                     {{comment.content}}
                 </div>
             </li>
