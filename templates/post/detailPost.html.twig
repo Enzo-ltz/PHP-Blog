@@ -11,14 +11,15 @@
         </br>
         <div> {{ post.content | raw }}</div>
     </div>
-    <div>
-        {{form(form)}}
-    </div>
+    {% if is_granted('ROLE_USER') %}
+        <div>
+            {{form(form)}}
+        </div>
+    {% endif %}
     <ul>
         {% for comment in post.comments | sort((a, b) => b.createdAt <=> a.createdAt) %}
             <li>Le : {{ comment.getCreatedAt | date("m/d/Y \\à g:ia") }}  par {{comment.author}} :
                 <div>
-                    {{ dump(comment) }}
                     {{comment.content}}
                 </div>
             </li>

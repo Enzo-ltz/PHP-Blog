@@ -5,7 +5,9 @@
 {% block body %}
 
     <h1>New Articles</h1>
-    <a href="{{ path('addPost')}}">Ajouter poste</a>
+    {% if is_granted('ROLE_AUTHOR') %}
+        <a href="{{ path('addPost')}}">Ajouter poste</a>
+    {% endif %}
     {% for post in posts %}
         <a class="row mx-3 pl-4 border" href='{{ path('detail', {post: post.id}) }}'>
             <article>
